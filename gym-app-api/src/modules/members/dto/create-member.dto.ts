@@ -1,31 +1,63 @@
-import { IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsDate,
+  IsEmail,
+  IsEnum,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
+
+import { GenderEnum } from '../enums';
 
 // TODO - finish creating DTO
 export class CreateMemberDto {
   @IsString()
+  @IsNotEmpty()
   firstName: string;
 
   @IsString()
-  middleName: string;
+  @IsOptional()
+  middleName?: string;
 
   @IsString()
+  @IsNotEmpty()
   lastName: string;
 
-  gender: string;
+  @IsEnum(GenderEnum)
+  @IsNotEmpty()
+  gender: GenderEnum;
 
+  @IsDate()
+  @Type(() => Date)
+  @IsNotEmpty()
   dateOfBirth: Date;
 
+  @IsString()
+  @IsNotEmpty()
   nationalId: string;
 
-  email: string;
+  @IsString()
+  @IsNotEmpty()
+  address: string;
 
+  @IsEmail()
+  @IsOptional()
+  email?: string;
+
+  @IsString()
+  @IsNotEmpty()
   phone: string;
 
-  emergencyContactName: string;
+  @IsString()
+  @IsOptional()
+  emergencyContactName?: string;
 
-  emergencyContactPhone: string;
+  @IsString()
+  @IsOptional()
+  emergencyContactPhone?: string;
 
-  observations: string;
-
-  address: string;
+  @IsString()
+  @IsOptional()
+  observations?: string;
 }

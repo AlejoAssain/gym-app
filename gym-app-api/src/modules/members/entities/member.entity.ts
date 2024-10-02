@@ -18,7 +18,7 @@ export class Member {
   @Column()
   firstName: string;
 
-  @Column()
+  @Column({ nullable: true })
   middleName: string;
 
   @Column()
@@ -34,16 +34,16 @@ export class Member {
   @Column({ unique: true })
   nationalId: string;
 
-  @Column({ unique: true })
+  @Column({ unique: true, nullable: true })
   email: string;
 
   @Column({ unique: true })
   phone: string;
 
-  @Column()
+  @Column({ nullable: true })
   emergencyContactName: string;
 
-  @Column()
+  @Column({ nullable: true })
   emergencyContactPhone: string;
 
   @Column({
@@ -66,7 +66,7 @@ export class Member {
   @OneToMany(() => Payment, (payment) => payment.member)
   payments: Payment[];
 
-  @Column({ type: 'date' })
+  @Column({ type: 'date', nullable: true })
   joinDate: Date;
 
   @CreateDateColumn()
