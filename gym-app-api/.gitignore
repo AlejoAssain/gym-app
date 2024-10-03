@@ -15,6 +15,7 @@ lerna-debug.log*
 # OS
 .DS_Store
 database.db
+package-lock.json
 
 # Tests
 /coverage
