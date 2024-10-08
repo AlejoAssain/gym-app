@@ -1,7 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { MembersService } from './members.service';
-import { CreateMemberDto } from './dto/create-member.dto';
-import { UpdateMemberDto } from './dto/update-member.dto';
+import { CreateMemberDto, UpdateMemberDto } from './dto';
 
 @Controller('members')
 export class MembersController {
@@ -20,6 +27,11 @@ export class MembersController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.membersService.findOne(+id);
+  }
+
+  @Get('/check-access/:nationalId')
+  checkAccess(@Param('nationalId') nationalId: string) {
+    return this.membersService.checkAccess(nationalId);
   }
 
   @Patch(':id')

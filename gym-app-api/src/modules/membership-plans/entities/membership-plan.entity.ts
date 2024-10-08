@@ -6,8 +6,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Member } from '../../members/entities/member.entity';
-import { Payment } from '../../payments/entities/payment.entity';
+import { Member } from '../../members/entities';
+import { Payment } from '../../payments/entities';
 
 @Entity()
 export class MembershipPlan {

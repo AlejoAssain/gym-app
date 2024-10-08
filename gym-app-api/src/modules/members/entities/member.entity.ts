@@ -29,7 +29,7 @@ export class Member {
   gender: string;
 
   @Column({ type: 'date' })
-  dateOfBirth: Date;
+  dateOfBirth: string;
 
   @Column({ unique: true })
   nationalId: string;
@@ -37,7 +37,7 @@ export class Member {
   @Column({ unique: true, nullable: true })
   email: string;
 
-  @Column({ unique: true })
+  @Column()
   phone: string;
 
   @Column({ nullable: true })
@@ -63,11 +63,14 @@ export class Member {
   })
   membershipPlan: MembershipPlan;
 
+  @Column({ type: 'date', nullable: true })
+  expirationDate: string;
+
   @OneToMany(() => Payment, (payment) => payment.member)
   payments: Payment[];
 
   @Column({ type: 'date', nullable: true })
-  joinDate: Date;
+  joinDate: string;
 
   @CreateDateColumn()
   createdAt: Date;

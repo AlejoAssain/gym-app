@@ -1,12 +1,13 @@
-import { Type } from 'class-transformer';
+import { Transform, Type } from 'class-transformer';
 import {
-  IsDate,
+  IsDate, IsDateString,
   IsEmail,
   IsEnum,
   IsNotEmpty,
   IsOptional,
   IsString,
 } from 'class-validator';
+import { parseNormalizedDate } from '../../../utilities';
 
 import { GenderEnum } from '../enums';
 
@@ -28,10 +29,9 @@ export class CreateMemberDto {
   @IsNotEmpty()
   gender: GenderEnum;
 
-  @IsDate()
-  @Type(() => Date)
+  @IsDateString()
   @IsNotEmpty()
-  dateOfBirth: Date;
+  dateOfBirth: string;
 
   @IsString()
   @IsNotEmpty()
@@ -48,6 +48,10 @@ export class CreateMemberDto {
   @IsString()
   @IsNotEmpty()
   phone: string;
+
+  @IsOptional()
+  @IsDateString()
+  expirationDate?: string;
 
   @IsString()
   @IsOptional()

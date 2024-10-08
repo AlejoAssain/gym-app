@@ -17,9 +17,9 @@ export class Payment {
   @Column()
   transactionId: string;
 
-  // TODO - use enum payment status
-  @Column()
-  status: string;
+  // TODO - use enum payment status and check how to handle status
+  // @Column()
+  // status: string;
 
   @ManyToOne(() => Member, (member) => member.payments, { nullable: false })
   member: Member;
